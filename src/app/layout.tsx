@@ -1,5 +1,6 @@
 import "./globals.css";
 
+import Header from "@/components/header";
 import { Inter } from "next/font/google";
 import type { Metadata } from "next";
 import Providers from "./providers";
@@ -19,7 +20,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <Providers>{children}</Providers>
+        <div className=" max-w-full">
+          <Header />
+          <Providers>{children}</Providers>
+        </div>
       </body>
     </html>
   );
