@@ -1,24 +1,14 @@
-import * as actions from "@/actions";
+import TopicCreateForm from "@/components/topics/topic-create-form";
 
-import Profile from "@/components/profile";
-import { auth } from "@/auth";
-
-export default async function Home() {
-  const session = await auth();
+export default function Home() {
   return (
-    <>
-      <form action={actions.signIn}>
-        <button type="submit">Sign in</button>
-      </form>
-      <form action={actions.signOut}>
-        <button type="submit">Sign out</button>
-      </form>
-      {session?.user ? (
-        <div>{JSON.stringify(session.user)}</div>
-      ) : (
-        <div>Signed out</div>
-      )}
-      <Profile />
-    </>
+    <div className="grid grid-cols-4 gap-4 p-4">
+      <div className="col-span-3">
+        <h1 className="text-xl">Topic listing</h1>
+      </div>
+      <div>
+        <TopicCreateForm />
+      </div>
+    </div>
   );
 }
