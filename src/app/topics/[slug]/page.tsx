@@ -1,3 +1,4 @@
+import PostCreateForm from "@/components/posts/post-create-form";
 import React from "react";
 interface TopicShowProps {
   params: {
@@ -11,7 +12,9 @@ const TopicShowPage = ({ params }: TopicShowProps) => {
       <div className="col-span-3">
         <h1 className="text-2xl font-bold mb-2">{slug}</h1>
       </div>
-      <div></div>
+      <div>
+        <PostCreateForm slug={slug} />
+      </div>
     </div>
   );
 };
