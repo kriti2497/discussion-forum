@@ -7,6 +7,10 @@ export type PostWithData = Post & {
   _count: { comments: number };
 };
 
+// ALTERNATIVE FOR WHEN YOU DON"T WANT TO WRITE TYPE
+// HERE YOU ALSO NEED TO REMOVE THE RETURN TYPE GIVEN FOR BELOW PROMISE => : Promise<PostWithData[]>
+// export type PostWithData = Awaited<ReturnType<typeof fetchPostsByTopicSlug>>[number]
+
 export function fetchPostsByTopicSlug(slug: string): Promise<PostWithData[]> {
   return db.post.findMany({
     where: { topic: { slug } },
