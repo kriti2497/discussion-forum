@@ -1,5 +1,4 @@
 import {
-  Input,
   Navbar,
   NavbarBrand,
   NavbarContent,
@@ -9,6 +8,7 @@ import {
 import HeaderAuth from "./header-auth";
 import Link from "next/link";
 import React from "react";
+import SearchInput from "./search-input";
 
 const Header = () => {
   return (
@@ -20,7 +20,7 @@ const Header = () => {
       </NavbarBrand>
       <NavbarContent style={{ justifyContent: "flex-end" }}>
         <NavbarItem>
-          <Input />
+          <SearchInput />
         </NavbarItem>
         <>
           <HeaderAuth />
