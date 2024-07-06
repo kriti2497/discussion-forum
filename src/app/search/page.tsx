@@ -1,4 +1,6 @@
+import PostList from "@/components/posts/post-list";
 import React from "react";
+import { fetchPostsBySearchTerm } from "@/db/queries/posts";
 
 interface SearchPageProps {
   searchParams: {
@@ -8,7 +10,11 @@ interface SearchPageProps {
 
 const Search = async ({ searchParams }: SearchPageProps) => {
   const { term } = searchParams;
-  return <div>{term}</div>;
+  return (
+    <div>
+      <PostList fetchData={() => fetchPostsBySearchTerm(term)} />
+    </div>
+  );
 };
 
 export default Search;

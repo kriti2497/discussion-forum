@@ -11,6 +11,19 @@ export type PostWithData = Post & {
 // HERE YOU ALSO NEED TO REMOVE THE RETURN TYPE GIVEN FOR BELOW PROMISE => : Promise<PostWithData[]>
 // export type PostWithData = Awaited<ReturnType<typeof fetchPostsByTopicSlug>>[number]
 
+export function fetchPostsBySearchTerm(term: string): Promise<PostWithData[]> {
+  return db.post.findMany({
+    where: {
+      OR: [{ title: { contains: term } }, { content: { contains: term } }],
+    },
+    include: {
+      topic: { select: { slug: true } },
+      user: { select: { name: true, image: true } },
+      _count: { select: { comments: true } },
+    },
+  });
+}
+
 export function fetchPostsByTopicSlug(slug: string): Promise<PostWithData[]> {
   return db.post.findMany({
     where: { topic: { slug } },

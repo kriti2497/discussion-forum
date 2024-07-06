@@ -4,10 +4,10 @@ import {
   NavbarContent,
   NavbarItem,
 } from "@nextui-org/react";
+import React, { Suspense } from "react";
 
 import HeaderAuth from "./header-auth";
 import Link from "next/link";
-import React from "react";
 import SearchInput from "./search-input";
 
 const Header = () => {
@@ -20,7 +20,9 @@ const Header = () => {
       </NavbarBrand>
       <NavbarContent style={{ justifyContent: "flex-end" }}>
         <NavbarItem>
-          <SearchInput />
+          <Suspense>
+            <SearchInput />
+          </Suspense>
         </NavbarItem>
         <>
           <HeaderAuth />
